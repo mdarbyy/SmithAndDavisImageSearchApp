@@ -1,0 +1,39 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-sm">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <h2 class="mb-2">
+              Stock Number Image Search
+            </h2>
+            <p class="text-muted mb-0">
+              Upload an Excel file containing stock numbers
+            </p>
+          </div>
+
+          <%= form_with url: upload_stock_numbers_path, method: :post, local: true do |form| %>
+            <div class="mb-2">
+              <%= form.label :file,
+                "Excel File",
+                class: "form-label fw-semibold" %>
+
+              <%= form.file_field :file,
+                class: "form-control",
+                accept: ".xlsx" %>
+
+              <div class="form-text text-center">
+                Only .xlsx files are supported.
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= form.submit "Upload File",
+                class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

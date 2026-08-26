@@ -1,10 +1,52 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.stock-number-page {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.stock-number-table-wrapper {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.stock-number-table-wrapper table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.stock-number-table-wrapper th:first-child,
+.stock-number-table-wrapper td:first-child {
+  width: 50%;
+  text-align: center;
+}
+
+.stock-number-table-wrapper th:last-child,
+.stock-number-table-wrapper td:last-child {
+  width: 50%;
+  text-align: center;
+}
+
+.stock-number-table {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.stock-number-table::-webkit-scrollbar {
+  display: none;
+}
+
+.stock-number-table table {
+  margin-bottom: 0;
+}

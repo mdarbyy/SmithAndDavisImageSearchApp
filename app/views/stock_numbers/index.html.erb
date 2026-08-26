@@ -1,0 +1,96 @@
+<% if @stock_numbers.present? %>
+  <div class="stock-number-page">
+    <div class="container-fluid px-4 pt-4">
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <%= link_to "Back",
+                root_path,
+                class: "btn btn-secondary" %>
+        </div>
+        <div class="col">
+          <h2 class="mb-1 text-center">Stock Number Image Search</h2>
+          <p class="text-muted mb-0 text-center">
+            <%= @stock_numbers.length %> unique stock numbers
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid px-4 py-3 stock-number-table-wrapper">
+      <div class="card h-100">
+        <div class="card-header p-0">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Stock Number</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="card-body p-0 stock-number-table">
+          <table class="table align-middle mb-0">
+            <tbody>
+              <% @page_stock_numbers.each do |stock_number| %>
+                <tr>
+                  <td class="text-center"><%= stock_number %></td>
+                  <td class="text-center">
+                    <%= link_to "View Images",
+                          "https://www.google.com/search?tbm=isch&q=#{ERB::Util.url_encode("New Balance Stock Number #{stock_number}")}",
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          class: "btn btn-primary btn-sm" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="stock-numbers" data-stock-numbers="<%= @page_stock_numbers.to_json %>"></div>
+
+    <div class="container-fluid px-4 pb-3">
+      <div class="row align-items-center">
+        <div class="col"></div>
+        <div class="col-auto">
+          <nav aria-label="Stock number pages">
+            <ul class="pagination align-items-center mb-0">
+              <li class="page-item <%= "disabled" if @page == 1 %>">
+                <%= link_to "First",
+                      stock_numbers_path(page: 1),
+                      class: "page-link" %>
+              </li>
+              <li class="page-item <%= "disabled" if @page == 1 %>">
+                <%= link_to "Previous",
+                      stock_numbers_path(page: @page - 1),
+                      class: "page-link" %>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link">Page <%= @page %> of <%= @total_pages %></span>
+              </li>
+              <li class="page-item <%= "disabled" if @page == @total_pages %>">
+                <%= link_to "Next",
+                      stock_numbers_path(page: @page + 1),
+                      class: "page-link" %>
+              </li>
+              <li class="page-item <%= "disabled" if @page == @total_pages %>">
+                <%= link_to "Last",
+                      stock_numbers_path(page: @total_pages),
+                      class: "page-link" %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col">
+          <div class="text-end">
+            <button type="button" id="view-all-images" class="btn btn-primary">
+              View All Images
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
