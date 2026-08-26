@@ -5,6 +5,32 @@ body {
   overflow: hidden;
 }
 
+#alertContainer {
+  position: fixed;
+  right: 50%;
+  top: .25em;
+  transform: translateX(50%);
+  z-index: 9999;
+}
+
+#overlay {
+  display: none;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#spinner {
+  z-index: 9999;
+  width: 100px;
+  height: 100px;
+  color: #0d6efd;
+}
+
 .stock-number-page {
   height: 100dvh;
   display: flex;
