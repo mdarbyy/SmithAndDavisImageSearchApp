@@ -24,6 +24,7 @@
               <tr>
                 <th scope="col" class="text-center">Stock Number</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
           </table>
@@ -36,10 +37,17 @@
                   <td class="text-center"><%= stock_number %></td>
                   <td class="text-center">
                     <%= link_to "View Images",
-                          "https://www.google.com/search?tbm=isch&q=#{ERB::Util.url_encode("New Balance Stock Number #{stock_number}")}",
+                          "https://www.google.com/search?tbm=isch&q=#{ERB::Util.url_encode("New Balance #{stock_number}")}",
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          class: "btn btn-primary btn-sm" %>
+                          class: "btn btn-primary btn-sm text-nowrap" %>
+                  </td>
+                  <td class="text-center">
+                    <%= check_box_tag "liked_stock_numbers[]",
+                    stock_number,
+                    false,
+                    class: "liked-stock-number",
+                    data: { stock_number: stock_number } %>
                   </td>
                 </tr>
               <% end %>
