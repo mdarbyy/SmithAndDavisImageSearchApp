@@ -14,10 +14,7 @@
 
           <%= form_with url: upload_stock_numbers_path, method: :post, local: true do |form| %>
             <div class="mb-2">
-              <%= form.label :file,
-                "Excel File",
-                class: "form-label fw-semibold" %>
-
+              
               <%= form.file_field :file,
                 class: "form-control",
                 accept: ".xlsx" %>
@@ -27,7 +24,7 @@
               </div>
             </div>
 
-            <div class="d-grid gap-2">
+            <div class="d-flex justify-content-center">
               <%= form.submit "Upload File",
                 class: "btn btn-primary" %>
             </div>
